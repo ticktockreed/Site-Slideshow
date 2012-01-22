@@ -24,23 +24,31 @@ $(document).ready(function() {
 	    $('#wrapper').append('<span id="load">LOADING...</span>');     
 	    $('#load').fadeIn('slow');  
 
+		var loadContent = $.ajax({ type: 'POST', cache: false, url: toLoad, data: {id: 'somedata'}, 
+		    success: function(data) {
+		        $('#content').html(data.find('#content').html());
+		    }
+		})
+		.error(function() {
+		    $('#content').html('<p>There was an error making the AJAX request</p>');
+		});
 
 
 
-		function loadContent(){
-			$('#content').load(toLoad,'',showNewContent)
-		}
+		// function loadContent(){
+		// 	$('#content').load(toLoad,'',showNewContent)
+		// }
 
 
-		
-		function showNewContent(){
-			$('#content').fadeIn('normal',hideLoader)
-		}
-		
-		function hideLoader(){
-			$('#load').fadeOut('normal')
-		}
-		
+		// 
+		// function showNewContent(){
+		// 	$('#content').fadeIn('normal',hideLoader)
+		// }
+		// 
+		// function hideLoader(){
+		// 	$('#load').fadeOut('normal')
+		// }
+		// 
 	});
 	
 	
