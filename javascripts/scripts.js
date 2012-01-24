@@ -26,6 +26,7 @@ $(document).ready(function() {
 
 		var loadContent = $.ajax({ type: 'POST', cache: false, url: toLoad, data: {id: 'somedata'}, 
 		    success: function(data) {
+ 				console.log(data, 'data');
 		        $('#content').html(data.find('#content').html());
 		    }
 		})
