@@ -5,53 +5,74 @@
 * 8/17/2011
 */
 
-
 $(document).ready(function() {
+	
+	if (window.location.hash.length > 5) {
+		$(window).hashchange();
+	}
+
+	// TO DO: 
+	// Add jQuery Cycle Plugin to move through images.
+	// Fix Hash change events to work on sub pages of site
+	// Animate menu with jQuery
+	// Add plus sign and hide product copy on pages
+
+
 
 	/* Load some AJAX
 	================================================== */
 
-	var ajaxpage = $('#nav ul li a');
+	var ajaxpage = $('a');
+	
+	
+	$('.images img').fadeIn('slow');
+	
 	
 	ajaxpage.click(function(event){            
 	   event.preventDefault();            
-	
-		var toLoad = $(this).attr('href');
-        
-		console.log(toLoad);                                          		
+		var strURL = $(this).attr('href')
+		var toLoad = strURL + ' #content'; 
+		
+		//Not sure what this does!
+		console.log(window.location.pathname);
+		if (window.location.pathname.length > 1) {
+			window.location.href = "/";
+			return;
+		}
+		  
+		window.location.hash = strURL;	    		
 
 	    $('#content').fadeOut('fast',loadContent);  
-	    $('#wrapper').append('<span id="load">LOADING...</span>');     
-	    $('#load').fadeIn('slow');  
-
-		var loadContent = $.ajax({ type: 'POST', cache: false, url: toLoad, data: {id: 'somedata'}, 
-		    success: function(data) {
- 				console.log(data, 'data');
-		        $('#content').html(data.find('#content').html());
-		    }
-		})
-		.error(function() {
-		    $('#content').html('<p>There was an error making the AJAX request</p>');
-		});
+	    $('body').append('<span id="load">LOADING...</span>')
+		$('#load').fadeIn('fast');     
 
 
-
-		// function loadContent(){
-		// 	$('#content').load(toLoad,'',showNewContent)
-		// }
-
-
-		// 
-		// function showNewContent(){
-		// 	$('#content').fadeIn('normal',hideLoader)
-		// }
-		// 
-		// function hideLoader(){
-		// 	$('#load').fadeOut('normal')
-		// }
-		// 
+		function loadContent(){
+			$("#content").load(toLoad,'',showNewContent);
+		}	
+		
+		function showNewContent() {
+			
+			
+			
+			$('#content').waitForImages(function() {
+				$('#content').fadeIn('normal',hideLoader)
+				$('#content img').fadeIn('slow');
+			});
+			
+			
+			// $('img').load(function(){
+			// 					$(this).fadeIn('slow');
+			// 				});
+		}
+		
+		function hideLoader(){
+			// $('#load').fadeOut('100');
+			// 		$('#load').remove();
+		}
+		
+		
 	});
-	
 	
 
 });

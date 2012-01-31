@@ -12,10 +12,10 @@ $category = "collection";
 		
    <div id="wrapper">
 
-	<div class="copy">
+	<!-- <div class="copy">
        <h2>tier</h2>
        <span class="caption">A caption related to the product with dimensions 144mm x 208mm x 562mm</span>
-	</div>	 
+	</div>	 --> 
    
       <div class="images">
       

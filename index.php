@@ -11,15 +11,15 @@ $category = "";
 		
    <div id="wrapper">	 
       
-		<div class="copy">
+		<!-- <div class="copy">
     	  <h2>Welcome to Additions</h2>
     	  <span class="caption">This probably won't remain here but we need one elsewhere so let's leave it here.</span>
-		</div>
+		</div> -->
 		
       <div class="images">
       
          <!-- We will have a collection of images -->
-         <img src="/images/titleslide.png" alt="title slide" />
+         <img src="/images/titleslide.png" alt="title slide" width="5000" />
 
         <!-- 
 		<img src="/images/packaging.png" alt="" />
