@@ -75,7 +75,9 @@ var objGlobals = {
 			var toLoad = strURL + ' #content'; 
 
 
-
+			$.ajaxSetup ({  
+			    cache: false  
+			});
 
 
 		//	document.title = objData.meta.title;
@@ -84,11 +86,27 @@ var objGlobals = {
 		    $(ajaxwrapper).fadeOut('fast',loadContent);  
 		    $('body').append('<span id="load">LOADING...</span>')
 			$('#load').fadeIn('fast');     
-
+			
+			//console.log(toLoad);
 
 			function loadContent(){
+			
+
+			$.ajax({
+			  url: strURL,
+			  dataType: 'html',
+			  success: function( data, showNewContent ) {
+			      var matches = data.match(/<title>(.*?)<\/title>/);
+			      var spUrlTitle = matches[1];
+
+					document.title = spUrlTitle;
+			  }
+			});
+				
+				
+				
 				$(ajaxwrapper).load(toLoad,'',showNewContent);
-			}	
+			}
 
 			function showNewContent() {
 
