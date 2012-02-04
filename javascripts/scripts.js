@@ -5,11 +5,21 @@
 * 8/17/2011
 */
 
+
+
 $(document).ready(function() {
 	
+	// Check for initial hash
 	if (window.location.hash.length > 5) {
 		$(window).hashchange();
 	}
+
+	// Interior page? No, no
+	// if (window.location.pathname.length > 1) {
+	// 	window.location.href = "/";
+	// 	return;
+	// }
+
 
 	// TO DO: 
 	// Add jQuery Cycle Plugin to move through images.
@@ -33,14 +43,14 @@ $(document).ready(function() {
 		var strURL = $(this).attr('href')
 		var toLoad = strURL + ' #content'; 
 		
-		//Not sure what this does!
-		console.log(window.location.pathname);
-		if (window.location.pathname.length > 1) {
-			window.location.href = "/";
-			return;
-		}
-		  
-		window.location.hash = strURL;	    		
+		// location.hash.slice(1) gives url minus hash
+		console.log(location.hash.slice(1));
+		// if (window.location.pathname.length > 1) {
+		// 	window.location.href = "/";
+		// 	return;
+		// }
+		
+		window.location.hash = strURL;		
 
 	    $('#content').fadeOut('fast',loadContent);  
 	    $('body').append('<span id="load">LOADING...</span>')
@@ -67,8 +77,8 @@ $(document).ready(function() {
 		}
 		
 		function hideLoader(){
-			// $('#load').fadeOut('100');
-			// 		$('#load').remove();
+			$('#load').fadeOut('100');
+					$('#load').remove();
 		}
 		
 		

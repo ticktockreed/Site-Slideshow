@@ -45,7 +45,8 @@
 	<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 	<script src="/javascripts/jquery.hashchange-1.3.js"></script>
 	<script src="/javascripts/jquery.waitforimages.js"></script>
-	<script src="/javascripts/scripts.js"></script>
+	<script src="/javascripts/jquery.cycle.all.js"></script>
+	<script src="/javascripts/scripttest.js"></script>
 </head>
 <body class="<?php print($pageslug); ?>">
 
@@ -65,8 +66,8 @@
 	<div class="container">  
 		
 		<header class="sixteen" id="header">
-			<h1 class="remove-bottom" id="logo"><a href="/" title="additions">additions</a></h1>
-			<h5>by Authentics</h5>     
+			<h1 class="remove-bottom" id="logo"><a href="/" title="additions">additions <span>by Authentics</span> </a></h1>
+			    
 		</header>          
 		
 		<nav rel="navigation" id="nav" class="sidebar">

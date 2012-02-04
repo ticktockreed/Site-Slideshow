@@ -458,6 +458,13 @@ html {
   bottom:0;
   top:0;
 }
+#header #logo a {
+  background:url(../images/logo.png) no-repeat 0 0 transparent;
+  text-indent:-999em;
+  display:block;
+  width:255px;
+  height:71px;
+}
 #header {
   top:40px;
   left:80px;
@@ -472,19 +479,6 @@ html {
   line-height:normal;
   padding:4px;
 }
-#nav ul li ul {
-  height:0;
-  opacity:0;
-  margin:0 0 0 20px;
-  -webkit-transition:all 1s ease-in-out;
-  -moz-transition:all 1s ease-in-out;
-  -o-transition:all 1s ease-in-out;
-  -ms-transition:all 1s ease-in-out;
-  transition:all 1s ease-in-out;
-}
-#nav ul li:hover ul { opacity:1; }
-#nav ul li:hover ul.collection { height:180px; }
-#nav ul li:hover ul.about { height:100px; }
 #nav ul li {
   margin:0;
   padding:0;
