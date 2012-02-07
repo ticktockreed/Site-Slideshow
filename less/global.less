@@ -169,33 +169,46 @@ html {
 }
 
 #controls {
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
+    float: right;
+    height: 40px;
+    position: relative;
+    width: 124px;
+    z-index: 12;
 	
-	#prevpage {
-		width: 80px; 
-		height: 100%;
-		position: absolute;
-		background: rgba(255,255,255,0.2);
-		left: 0;
-		top: 0;
-		bottom: 0;
-		display: none;
+	#prev {
+		text-align:center;
+		width: 40px; 
+		height: 40px;
+		float:left;
+		margin-right: 2px;
+		background: rgba(255,255,160,0.8);
+		cursor: pointer;
+		
+		&:hover {background: rgba(255,255,160,1);}
+		
 	}
-	#nextpage {
-		width: 80px;
-		height: 100%;
-		position: absolute;
-		background: rgba(255,255,255,0.2);
-		right: 0;
-		top: 0;
-		bottom: 0;
-		display: none;
+	#playpause {
+		text-align:center;
+		width: 40px;
+		height: 40px;
+		float:left;
+		margin-right: 2px;
+		background: rgba(255,160,255,0.8);
+		cursor: pointer;
+		
+		&:hover {background: rgba(255,160,255,1);}
+		
+	}
+	#next {
+		text-align:center;
+		width: 40px;
+		height: 40px;
+		float:left;
+		background: rgba(160,255,255,0.8);
+		cursor: pointer;
+		
+		&:hover {background: rgba(160,255,255,1);}
+		
 	}
 }
 

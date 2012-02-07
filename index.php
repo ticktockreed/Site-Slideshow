@@ -21,9 +21,18 @@ $category = "";
 		-->
 		
 		<div id="copy">
+		
     	  <h2>Welcome to Additions</h2>
     	  <span class="caption">This probably won't remain here but we need one elsewhere so let's leave it here.</span>
+		
 		</div> 
+
+	   <!-- Slideshow controls -->
+	   <div id="controls">
+	         <div id="prev" class="btn">BACK</div>
+	         <div id="playpause" class="btn">PLAY</div>
+	         <div id="next" class="btn">NEXT</div>
+	   </div>
 		
 		
       	<div id="slideshow">
@@ -38,12 +47,7 @@ $category = "";
 
 	    </div>
 	
-	   <!-- Slideshow controls -->
-	   <div id="controls">
-	         <div id="back" class="btn"></div>
-	         <div id="playpause" class="btn"></div>
-	         <div id="next" class="btn"></div>
-	   </div>
+
 		
 		<!--
 		==================================
@@ -54,15 +58,6 @@ $category = "";
 
    </div>
 
-	     
-
-	   <div id="controls">       
-		   <ul>
-		      <li><a href="/collection/tier.php" id="prevpage" class="ajaxcontent">Previous</a></li> 
-  		   <li><a href="/collection/plus.php" id="nextpage" class="ajaxcontent">Next</a></li>
-		   </ul>  
-		</div>    
-		
    
 </div>  
 		               

@@ -37,7 +37,6 @@ var objGlobals = {
 		objGlobals.init_ajax_site();
 		objGlobals.init_hash_change_hook();
 		objGlobals.init_slideshow();
-		objGlobals.slideshowControls();
 		
 	},
 	
@@ -136,48 +135,7 @@ var objGlobals = {
 /**********************************************************
 	Slideshow
 **********************************************************/
-	
-	slideshowControls: function() {
-		
-		// Backwards navigation
-		$("#back").click(function() {
-			stopAnimation();
-			navigate("back");
-		});
 
-		// Forward navigation
-		$("#next").click(function() {
-			stopAnimation();
-			navigate("next");
-		});
-
-		var interval;
-		$("#control").toggle(function(){
-			stopAnimation();
-		}, function() {
-			// Change the background image to "pause"
-			$(this).css({ "background-image" : "url(images/btn_pause.png)" });
-
-			// Show the next image
-			navigate("next");
-
-			// Start playing the animation
-			interval = setInterval(function() {
-				navigate("next");
-			}, slideshowSpeed);
-		});
-		
-		
-
-			var stopAnimation = function() {
-				// Change the background image to "play"
-				$("#control").css({ "background-image" : "url(images/btn_play.png)" });
-
-				// Clear the interval
-				clearInterval(interval);
-			};
-	},
-	
 	slideSwitch: function() {	
 	    var $active = $('#slideshow div.active');
 
