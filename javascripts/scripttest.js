@@ -28,8 +28,16 @@ var objGlobals = {
 	 */
 	init: function() {
 		
+		// don't cache AJAXed content
+		$.ajaxSetup ({  
+		    cache: false  
+		});
+		
+		
 		objGlobals.init_ajax_site();
 		objGlobals.init_hash_change_hook();
+		objGlobals.init_slideshow();
+		objGlobals.slideshowControls();
 		
 	},
 	
@@ -49,7 +57,7 @@ var objGlobals = {
 			
 			$(window).hashchange(function() {
 				// ADD THIS LATER // _gaq.push(['_trackPageview', window.location.hash.substr(1)]);
-				objGlobals._fetch_page_via_ajax(window.location.hash);
+				objGlobals.init_ajax_site(window.location.hash);
 			});
 			
 		}
@@ -75,52 +83,43 @@ var objGlobals = {
 			var toLoad = strURL + ' #content'; 
 
 
-			$.ajaxSetup ({  
-			    cache: false  
-			});
-
-
-		//	document.title = objData.meta.title;
 			window.location.hash = strURL;		
 
 		    $(ajaxwrapper).fadeOut('fast',loadContent);  
 		    $('body').append('<span id="load">LOADING...</span>')
 			$('#load').fadeIn('fast');     
 			
-			//console.log(toLoad);
 
 			function loadContent(){
 			
-
-			$.ajax({
-			  url: strURL,
-			  dataType: 'html',
-			  success: function( data, showNewContent ) {
-			      var matches = data.match(/<title>(.*?)<\/title>/);
-			      var spUrlTitle = matches[1];
-
+				// AJAX in whole page so we can grab what we need
+				$.ajax({
+				  url: strURL,
+				  dataType: 'html',
+				  success: function( data, showNewContent ) {
+			    
+					// Change page title 
+					var matches = data.match(/<title>(.*?)<\/title>/);
+				    var spUrlTitle = matches[1];
 					document.title = spUrlTitle;
-			  }
-			});
 				
+				  }
+				});
 				
-				
+				// Inject new page #content into the DOM
 				$(ajaxwrapper).load(toLoad,'',showNewContent);
+				
 			}
 
 			function showNewContent() {
-
-
-
-				$(ajaxwrapper).waitForImages(function() {
-					$(ajaxwrapper).fadeIn('normal',hideLoader)
-					$(ajaxwrapper + 'img').fadeIn('slow');
-				});
-
+				
+				$(ajaxwrapper).fadeIn('normal',hideLoader)
+				$(ajaxwrapper + 'img').fadeIn('slow');
 
 				$('img').load(function(){
-									$(this).fadeIn('slow');
-								});
+					$(this).fadeIn('slow');
+				});
+				
 			}
 
 			function hideLoader(){
@@ -133,10 +132,72 @@ var objGlobals = {
 		
 	},
 	
-	_fetch_page_via_ajax: function(strURL, funcCallback) {}
+	
+/**********************************************************
+	Slideshow
+**********************************************************/
+	
+	slideshowControls: function() {
+		
+		// Backwards navigation
+		$("#back").click(function() {
+			stopAnimation();
+			navigate("back");
+		});
 
+		// Forward navigation
+		$("#next").click(function() {
+			stopAnimation();
+			navigate("next");
+		});
+
+		var interval;
+		$("#control").toggle(function(){
+			stopAnimation();
+		}, function() {
+			// Change the background image to "pause"
+			$(this).css({ "background-image" : "url(images/btn_pause.png)" });
+
+			// Show the next image
+			navigate("next");
+
+			// Start playing the animation
+			interval = setInterval(function() {
+				navigate("next");
+			}, slideshowSpeed);
+		});
+		
+		
+
+			var stopAnimation = function() {
+				// Change the background image to "play"
+				$("#control").css({ "background-image" : "url(images/btn_play.png)" });
+
+				// Clear the interval
+				clearInterval(interval);
+			};
+	},
+	
+	slideSwitch: function() {	
+	    var $active = $('#slideshow div.active');
+
+	    if ( $active.length == 0 ) $active = $('#slideshow div:last');
+			
+	    var $next =  $active.next().length ? $active.next()
+	        : $('#slideshow div:first');
+
+	    $active.addClass('last-active');
+
+	    $next.css({opacity: 0.0})
+	        .addClass('active')
+	        .animate({opacity: 1.0}, 800, function() {
+	            $active.removeClass('active last-active');
+	        });
+	},
+	init_slideshow: function() {
+    	setInterval( objGlobals.slideSwitch, 2400 );
+	}
 }
-
 
 	/**
 	 * Document Ready Event. Don't stuff JS here. Put it
