@@ -37,6 +37,8 @@ var objGlobals = {
 		objGlobals.init_ajax_site();
 		objGlobals.init_hash_change_hook();
 		objGlobals.init_slideshow();
+		objGlobals.slideshowControls();
+		objGlobals.slideSwitch();
 		
 	},
 	
@@ -79,7 +81,7 @@ var objGlobals = {
 		ajaxpage.click(function(event){            
 		   event.preventDefault();            
 			var strURL = $(this).attr('href')
-			var toLoad = strURL + ' #content #wrapper'; 
+			var toLoad = strURL + ' #content'; 
 
 
 			window.location.hash = strURL;		
@@ -118,7 +120,6 @@ var objGlobals = {
 				$('img').load(function(){
 					$(this).fadeIn('slow');
 				});
-				objGlobals.init_slideshow();
 				
 			}
 
@@ -136,29 +137,108 @@ var objGlobals = {
 /**********************************************************
 	Slideshow
 **********************************************************/
-	init_slideshow: function() {
-		
-		// Start the slideshow
-		$('#slideshow').cycle({
-			timeout:1000,
-			width: 'fit',
-		    prev:   '#prev', 
-		    next:   '#next'
-		});
-		
-		// Play / Pause Button
-		$('#playpause').toggle(function() { 
-		    $('#slideshow').cycle('pause'); 
-			$(this).addClass('paused');
-			$(this).html('PAUSED');
-		}, function () {
-			$('#slideshow').cycle('resume'); 
-			$(this).removeClass('paused');
-			$(this).html('PLAY');
-		});
-		
 	
+	slideshowControls: function() {
+		
+		// Backwards navigation
+		$("#prev").click(function() {
+			stopAnimation();
+			objGlobals.navigate("prev");
+		});
+
+		// Forward navigation
+		$("#next").click(function() {
+			stopAnimation();
+			objGlobals.navigate("next");
+		});
+
+		var interval;
+		$("#playpause").toggle(function(){
+			stopAnimation();
+		}, function() {
+
+			// Show the next image
+			objGlobals.navigate("next");
+
+			// Start playing the animation
+			interval = setInterval(function() {
+				objGlobals.navigate("next");
+			}, slideshowSpeed);
+		}); 
+
+		var stopAnimation = function() {
+			// Change the background image to "play"
+			$("#control").css({ "background-image" : "url(images/btn_play.png)" });
+
+			// Clear the interval
+			clearInterval(interval);
+		};
 	},
+	
+	slideSwitch: function() {	
+		animating = true;
+	    var $active = $('#slideshow div.active');
+
+	    if ( $active.length == 0 ) $active = $('#slideshow div:last');
+			
+	    var $next =  $active.next().length ? $active.next()
+	        : $('#slideshow div:first');
+
+	    $active.addClass('last-active');
+
+	    $next.css({opacity: 0.0})
+	        .addClass('active')
+	        .animate({opacity: 1.0}, 800, function() {
+	            $active.removeClass('active last-active');
+	        });
+	},
+	
+	
+	
+	navigate: function(direction) {
+		photos = $('#slideshow').children('div');
+		// Check if no animation is running. If it is, prevent the action
+		if(animating) {
+			return;
+		}
+		
+		// Check which current image we need to show
+		if(direction == "next") {
+			currentImg++;
+			if(currentImg == photos.length + 1) {
+				currentImg = 1;
+			}
+		} else {
+			currentImg--;
+			if(currentImg == 0) {
+				currentImg = photos.length;
+			}
+		}
+		
+		// Check which container we need to use
+		// var currentContainer = activeContainer;
+		// if(activeContainer == 1) {
+		// 	activeContainer = 2;
+		// } else {
+		// 	activeContainer = 1;
+		// }
+		
+		//showImage(photos[currentImg - 1], currentContainer, activeContainer);
+		
+	},
+	
+	
+	init_slideshow: function() {
+		animating = false;
+		currentImg = 0;
+		// Start playing the animation
+		slideshowSpeed = 2400;
+		interval = setInterval(function() {
+			objGlobals.navigate("next");
+		}, slideshowSpeed);
+		
+    	// setInterval( objGlobals.slideSwitch, 2400 );
+	}
 }
 
 	/**

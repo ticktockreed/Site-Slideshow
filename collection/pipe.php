@@ -12284,13 +12284,7 @@ $category = "collection";
    </div><!-- #wrapper -->
 
 	
-	
-    <div id="controls">       
-	   <ul>
-	      <li><a href="/index.php" id="prevpage" class="ajaxcontent">Previous</a></li> 
- 		   <li><a href="/collection/tier.php" id="nextpage" class="ajaxcontent">Next</a></li>
-	   </ul>  
-	</div>     
+	   
 		
    
 </div>        

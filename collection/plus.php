@@ -11,34 +11,31 @@ $category = "collection";
 		
    <div id="wrapper">	 
       
-	<!-- <div class="copy">
+	<div id="copy">
 		<h2>plus</h2>
 		<span class="caption">A caption related to the product with dimensions 144mm x 208mm x 562mm</span>
-	</div> -->
+	</div>
 	
-      <div class="images">
+	   <!-- Slideshow controls -->
+	   <div id="controls">
+	         <div id="prev" class="btn">BACK</div>
+	         <div id="playpause" class="btn">PLAY</div>
+	         <div id="next" class="btn">NEXT</div>
+	   </div>
+	
+      <div id="slideshow">
       
          <!-- We will have a collection of images -->
-         <img src="/images/lights.png" alt="" />
-
-        <!-- 
-		 <img src="/images/packaging.png" alt="" />
-         <img src="/images/lights.png" alt="" />
-         <img src="/images/wooden-objects.png" alt="" />
-      	-->
+         <div class="active"><img src="/images/lights.png" alt="" /></div>
+		 <div><img src="/images/packaging.png" alt="" /></div>
+         <div><img src="/images/lights.png" alt="" /></div>
+         <div><img src="/images/wooden-objects.png" alt="" /></div>
+      	
       
       </div><!-- .images -->
    
    </div><!-- #wrapper -->
-
-	
-	
-    <div id="controls">       
-	   <ul>
-	      <li><a href="/index.php" id="prevpage" class="ajaxcontent">Previous</a></li> 
- 		   <li><a href="/collection/tier.php" id="nextpage" class="ajaxcontent">Next</a></li>
-	   </ul>  
-	</div>     
+   
 		
    
 </div>        

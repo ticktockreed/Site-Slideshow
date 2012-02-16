@@ -31,13 +31,7 @@ $category = "collection";
       </div><!-- .images -->
 
    </div><!-- #wrapper -->  
-
-   <div id="controls">       
-	   <ul>
-	   	   <li><a href="/collection/plus.php" id="prevpage" class="ajaxcontent">Previous</a></li> 
- 		   <li><a href="/index.php" id="nextpage" class="ajaxcontent">Next</a></li>
-	   </ul>  
-   </div>     
+   
 		
 </div>  
 	      
