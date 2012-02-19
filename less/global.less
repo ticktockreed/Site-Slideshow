@@ -53,10 +53,14 @@ html {
 ===============================================================================*/
   
 #nav {
-	bottom: 80px; 
+	top: 40px; 
 	position: absolute; 
-	left: 80px; 
+	right: 80px; 
 	z-index: 999;
+	font-family: @font-stack-main; 
+	text-align: right;
+    font-size: 1.5em;
+	text-transform: lowercase;
 
 	ul {
 		overflow: hidden;
@@ -67,24 +71,22 @@ html {
 			padding: 0;
 			background: none; 
 			display: block;
-			line-height: 1.8em;
+			line-height: 1.25em;
 		
 			a {
-				background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
 				color: @text-color;
-			    font-size: 1.25em;
-			    line-height: normal;
-			    padding: 4px;
+				display: block;
 			
 				&:hover {
-					color: #ff0000;
-				}
-					
+					color:lighten(@text-color, 0%);
+					text-decoration: none;
+				} 
+					 
 			}
 			
-/*			ul {
+			ul {
 				height:0;
-				opacity:0;
+				opacity:0; 
 				margin: 0 0 0 20px;
 
 				-webkit-transition: all 1s ease-in-out;
@@ -92,8 +94,13 @@ html {
 				-o-transition: all 1s ease-in-out;
 				-ms-transition: all 1s ease-in-out;
 				transition: all 1s ease-in-out;
+				
+				a {
+					color: lighten(@text-color, 30%);
 				}
-			
+				
+			}
+			 
 			&:hover ul {
 				opacity: 1;
 			}	
@@ -104,7 +111,7 @@ html {
 			
 			&:hover ul.about {
 				height:100px; 
-			}*/
+			}
 
 			
 		}  
@@ -157,58 +164,98 @@ html {
 	z-index: 2;
 	
 	#copy {
-	    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
-	    border-radius: 10px 10px 10px 10px;
-	    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	    padding: 10px;
-	    position: absolute;
-	    right: 0;
-	    top: 40px;
-	    z-index: 12;
+		bottom: 40px;
+		left: 80px;
+		position: absolute;
+		right: 110px;
+		overflow: hidden;
+		height: 51px;
+		
+		#details {
+		    background: none repeat scroll 0 0 rgba(220, 220, 220, 0.9);
+			position: absolute;
+			right: -110%;
+		    z-index: 12;
+			width: 100%;
+			color: lighten(@text-color, 20%);
+			
+			
+			.title {
+				margin: 10px 10px 0 10px;
+				font-size: 1.125em;
+				color: lighten(@text-color, 10%);
+			}
+			.description {
+				margin: 0 10px 10px 10px;
+				display:block;
+				overflow:hidden;
+				z-index: 99;
+			}
+		}
 	}
 	
 }
 
+
 #controls {
-    float: right;
+    float: left;
     height: 40px;
+    margin-left: 5px;
+    margin-top: 5px;
     position: relative;
     width: 124px;
     z-index: 12;
+	margin-left: 40px;
 	
 	#prev {
+		background: url(../images/controls.png) repeat scroll -133px 0 transparent;
 		text-align:center;
 		width: 40px; 
 		height: 40px;
 		float:left;
 		margin-right: 2px;
-		background: rgba(255,255,160,0.8);
+		text-indent: -999em;
 		cursor: pointer;
+		opacity: 0.8;
 		
-		&:hover {background: rgba(255,255,160,1);}
+		&:hover {
+			opacity: 1;
+		}
 		
 	}
 	#playpause {
+		background: url(../images/controls.png) repeat scroll -3px 0 transparent;
 		text-align:center;
 		width: 40px;
 		height: 40px;
 		float:left;
 		margin-right: 2px;
-		background: rgba(255,160,255,0.8);
+		text-indent: -999em;
 		cursor: pointer;
+		opacity: 0.8;
 		
-		&:hover {background: rgba(255,160,255,1);}
-		
+		&.paused {
+			background: url(../images/controls.png) repeat scroll -43px 0 transparent;			
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+	
 	}
 	#next {
+		background: url(../images/controls.png) repeat scroll -93px 0 transparent;
 		text-align:center;
 		width: 40px;
 		height: 40px;
 		float:left;
-		background: rgba(160,255,255,0.8);
 		cursor: pointer;
+		text-indent: -999em;
+		opacity: 0.8;
 		
-		&:hover {background: rgba(160,255,255,1);}
+		&:hover {
+			opacity: 1;
+		}
 		
 	}
 }
@@ -277,13 +324,36 @@ html {
 .add-bottom { margin-bottom: 20px !important; }
 .visually-hidden {display: none;}
 
+/*************************************************************************
+ #Prevent FOUC (flash of unstyled content)
+**************************************************************************/
+html.js {
+	#content .details {
+		left: auto;
+		overflow:hidden;
+	}
+	#sign {
+	    bottom: 40px;
+	    display: block;
+	    font-family: arial black;
+	    font-size: 98px;
+	    height: auto;
+	    line-height: 0.58em;
+	    position: absolute;
+	    right: 80px;
+	    vertical-align: middle;
+	    z-index: 99;
+		cursor: pointer;
+	}
+}
+
 
 /*************************************************************************
  #IE 7 Fixes
 **************************************************************************/
 
 /* Header */
-.ie6 {
+.ie7 {
 	
 }
 

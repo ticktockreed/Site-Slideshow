@@ -12,6 +12,8 @@ $category = "";
 <div id="content">
 		
    <div id="wrapper">	 
+	
+    <div id="sign">+</div>
       
 
 		<!--
@@ -21,18 +23,16 @@ $category = "";
 		-->
 		
 		<div id="copy">
-		
-    	  <h2>Welcome to Additions</h2>
-    	  <span class="caption">This probably won't remain here but we need one elsewhere so let's leave it here.</span>
-		
-		</div> 
 
-	   <!-- Slideshow controls -->
-	   <div id="controls">
-	         <div id="prev" class="btn">BACK</div>
-	         <div id="playpause" class="btn">PLAY</div>
-	         <div id="next" class="btn">NEXT</div>
-	   </div>
+			<div id="details">
+	  	  		<h1 class="title"><strong>welcome</strong> to additions</h1>
+		  	 	 <span class="description">carbonised bamboo, acrylic, rubber        
+						<span class="dimensions">h70   w55   d70</span>
+				  </span>
+			</div>
+
+		</div>
+
 		
 		
       	<div id="slideshow">

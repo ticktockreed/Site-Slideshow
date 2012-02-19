@@ -11,22 +11,25 @@ $category = "collection";
 <div id="content">
 		
    <div id="wrapper">
+	
+    <div id="sign">+</div>
 
-	<!-- <div class="copy">
-       <h2>tier</h2>
-       <span class="caption">A caption related to the product with dimensions 144mm x 208mm x 562mm</span>
-	</div>	 --> 
+
+	<div id="copy">
+
+		<div id="details">
+  	  		<h1 class="title"><strong>tier</strong> shelves</h1>
+	  	 	 <span class="description">carbonised bamboo, acrylic, rubber        
+					<span class="dimensions">h70   w55   d70</span>
+			  </span>
+		</div>
+
+	</div>
    
       <div class="images">
       
          <!-- We will have a collection of images -->
          <img src="/images/wooden-objects.png" alt="" />
-
-        <!-- 
-		<img src="/images/packaging.png" alt="" />
-         <img src="/images/lights.png" alt="" />
-         <img src="/images/wooden-objects.png" alt="" />
-      	-->
 
       </div><!-- .images -->
 
