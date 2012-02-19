@@ -22,6 +22,7 @@ $category = "";
 		==================================
 		-->
 		
+<<<<<<< HEAD
 		<div id="copy">
 
 			<div id="details">
@@ -33,6 +34,18 @@ $category = "";
 
 		</div>
 
+=======
+		<div id="copy" class="visuallyhidden">
+			
+			
+    	  <h1 class="title"><strong>welcome</strong> to additions</h1>
+    	  <span class="description">carbonised bamboo, acrylic, rubber        
+			<span class="dimensions">h70   w55   d70</span>
+		  </span>
+		
+		</div> 
+
+>>>>>>> b68f935b6e27dc0f61295b051658ef0aa5c50862
 		
 		
       	<div id="slideshow">

@@ -556,6 +556,10 @@ html {
   position:absolute;
   right:-110%;
   z-index:12;
+<<<<<<< HEAD
+=======
+  padding-right:30px;
+>>>>>>> b68f935b6e27dc0f61295b051658ef0aa5c50862
   width:100%;
   color:#666666;
 }
