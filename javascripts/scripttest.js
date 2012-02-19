@@ -37,6 +37,7 @@ var objGlobals = {
 		objGlobals.init_ajax_site();
 		objGlobals.init_hash_change_hook();
 		objGlobals.init_slideshow();
+		objGlobals.init_details();
 		
 	},
 	
@@ -119,6 +120,7 @@ var objGlobals = {
 					$(this).fadeIn('slow');
 				});
 				objGlobals.init_slideshow();
+				objGlobals.init_details();
 				
 			}
 
@@ -138,6 +140,11 @@ var objGlobals = {
 **********************************************************/
 	init_slideshow: function() {
 		
+		if ($('#slideshow').children().length > 1)
+		  {
+			$('#details').prepend('<div id="controls"><div id="prev" class="btn">BACK</div><div id="playpause" class="btn">PLAY</div><div id="next" class="btn">NEXT</div></div>');
+		  }
+		
 		// Start the slideshow
 		$('#slideshow').cycle({
 			timeout:1000,
@@ -150,15 +157,40 @@ var objGlobals = {
 		$('#playpause').toggle(function() { 
 		    $('#slideshow').cycle('pause'); 
 			$(this).addClass('paused');
-			$(this).html('PAUSED');
+			$(this).html('PLAY');
 		}, function () {
 			$('#slideshow').cycle('resume'); 
 			$(this).removeClass('paused');
-			$(this).html('PLAY');
+			$(this).html('PAUSE');
 		});
 		
-	
 	},
+	
+	/**********************************************************
+		Slideshow
+	**********************************************************/
+		init_details: function() {		
+		
+				$('#sign').click(function() {
+					
+						if ($('#copy').hasClass('open'))
+						{
+							$('#copy').removeClass('open');
+							$('#details').animate({
+								right: '-110%'
+							});
+						}  else {
+							
+							$('#copy').addClass('open');
+							$('#details').animate({
+								right: '0%'
+							});
+						}
+				});				
+			
+			
+			
+		},
 }
 
 	/**

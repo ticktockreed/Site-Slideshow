@@ -10,18 +10,25 @@ $category = "collection";
 <div id="content">
 		
    <div id="wrapper">	 
-      
+	
+    <div id="sign">+</div>
+
 	<div id="copy">
-		<h2>plus</h2>
-		<span class="caption">A caption related to the product with dimensions 144mm x 208mm x 562mm</span>
+
+		<div id="details">
+			
+			<div style="float:left">
+  	  			<h1 class="title"><strong>plus</strong> pepper grinder</h1>
+		  	 	<span class="description">carbonised bamboo, acrylic, rubber        
+					<span class="dimensions">h70   w55   d70</span>
+				</span>
+			</div>
+			
+		</div>
+
 	</div>
 	
-	   <!-- Slideshow controls -->
-	   <div id="controls">
-	         <div id="prev" class="btn">BACK</div>
-	         <div id="playpause" class="btn">PLAY</div>
-	         <div id="next" class="btn">NEXT</div>
-	   </div>
+
 	
       <div id="slideshow">
       

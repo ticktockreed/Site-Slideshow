@@ -155,14 +155,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   transition:all 350ms linear;
 }
 body {
-  font-family:Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+  font-family:Helvetica, Arial, sans-serif;
   color:#333333;
   font-size:12px !important;
   line-height:1.3333333em;
 }
 h1, h2, h3, h4, h5, h6 {
   color:#333333;
-  font-family:Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:'Arial Black', Helvetica, Arial, sans-serif;
   font-weight:normal;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight:inherit; }
@@ -471,30 +471,48 @@ html {
   position:absolute;
   z-index:999;
 }
-#nav ul li a:hover { color:#ff0000; }
-#nav ul li a {
-  background:none repeat scroll 0 0 rgba(255,255,255,0.8);
+#nav ul li a:hover {
   color:#333333;
-  font-size:1.25em;
-  line-height:normal;
-  padding:4px;
+  text-decoration:none;
 }
+#nav ul li a {
+  color:#333333;
+  display:block;
+}
+#nav ul li ul a { color:#808080; }
+#nav ul li ul {
+  height:0;
+  opacity:0;
+  margin:0 0 0 20px;
+  -webkit-transition:all 1s ease-in-out;
+  -moz-transition:all 1s ease-in-out;
+  -o-transition:all 1s ease-in-out;
+  -ms-transition:all 1s ease-in-out;
+  transition:all 1s ease-in-out;
+}
+#nav ul li:hover ul { opacity:1; }
+#nav ul li:hover ul.collection { height:180px; }
+#nav ul li:hover ul.about { height:100px; }
 #nav ul li {
   margin:0;
   padding:0;
   background:none;
   display:block;
-  line-height:1.8em;
+  line-height:1.25em;
 }
 #nav ul {
   overflow:hidden;
   width:auto;
 }
 #nav {
-  bottom:80px;
+  top:40px;
   position:absolute;
-  left:80px;
+  right:80px;
   z-index:999;
+  font-family:'Arial Black', Helvetica, Arial, sans-serif;
+  text-align:right;
+  font-size:1.5em;
+  text-transform:lowercase;
 }
 #load {
   background:none repeat scroll 0 0 #cccccc;
@@ -522,15 +540,33 @@ html {
   height:auto;
   display:none;
 }
-#content #copy {
-  background:none repeat scroll 0 0 rgba(255,255,255,0.9);
-  border-radius:10px 10px 10px 10px;
-  box-shadow:0 3px 3px rgba(0,0,0,0.2);
-  padding:10px;
+#content #copy #details .title {
+  margin:10px 10px 0 10px;
+  font-size:1.125em;
+  color:#4d4d4d;
+}
+#content #copy #details .description {
+  margin:0 10px 10px 10px;
+  display:block;
+  overflow:hidden;
+  z-index:99;
+}
+#content #copy #details {
+  background:none repeat scroll 0 0 rgba(220,220,220,0.9);
   position:absolute;
-  right:0;
-  top:40px;
+  right:-110%;
   z-index:12;
+  padding-right:30px;
+  width:100%;
+  color:#666666;
+}
+#content #copy {
+  bottom:40px;
+  left:80px;
+  position:absolute;
+  right:110px;
+  overflow:hidden;
+  height:51px;
 }
 #content {
   background:#ffffff;
@@ -543,38 +579,48 @@ html {
   height:100%;
   z-index:2;
 }
-#controls #prev:hover { background:rgba(255,255,160,1); }
+#controls #prev:hover { opacity:1; }
 #controls #prev {
+  background:url(../images/controls.png) repeat scroll -133px 0 transparent;
   text-align:center;
   width:40px;
   height:40px;
   float:left;
   margin-right:2px;
-  background:rgba(255,255,160,0.8);
+  text-indent:-999em;
   cursor:pointer;
+  opacity:0.8;
 }
-#controls #playpause:hover { background:rgba(255,160,255,1); }
+#controls #playpause.paused { background:url(../images/controls.png) repeat scroll -43px 0 transparent; }
+#controls #playpause:hover { opacity:1; }
 #controls #playpause {
+  background:url(../images/controls.png) repeat scroll -3px 0 transparent;
   text-align:center;
   width:40px;
   height:40px;
   float:left;
   margin-right:2px;
-  background:rgba(255,160,255,0.8);
+  text-indent:-999em;
   cursor:pointer;
+  opacity:0.8;
 }
-#controls #next:hover { background:rgba(160,255,255,1); }
+#controls #next:hover { opacity:1; }
 #controls #next {
+  background:url(../images/controls.png) repeat scroll -93px 0 transparent;
   text-align:center;
   width:40px;
   height:40px;
   float:left;
-  background:rgba(160,255,255,0.8);
   cursor:pointer;
+  text-indent:-999em;
+  opacity:0.8;
 }
 #controls {
-  float:right;
+  float:left;
   height:40px;
+  margin-left:5px;
+  margin-left:40px;
+  margin-top:5px;
   position:relative;
   width:124px;
   z-index:12;
@@ -652,3 +698,20 @@ html {
 .half-bottom { margin-bottom:10px !important; }
 .add-bottom { margin-bottom:20px !important; }
 .visually-hidden { display:none; }
+html.js #content .details {
+  left:auto;
+  overflow:hidden;
+}
+html.js #sign {
+  bottom:40px;
+  display:block;
+  font-family:arial black;
+  font-size:98px;
+  height:auto;
+  line-height:0.58em;
+  position:absolute;
+  right:80px;
+  vertical-align:middle;
+  z-index:99;
+  cursor:pointer;
+}

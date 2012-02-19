@@ -42,6 +42,7 @@
 	
 	<!-- JS
 	================================================== -->
+	<script src="/javascripts/modernizr.custom.js"></script>
 	<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 	<script src="/javascripts/jquery.hashchange-1.3.js"></script>
 	<script src="/javascripts/jquery.cycle.all.js"></script>
@@ -71,7 +72,7 @@
 		
 		<nav rel="navigation" id="nav" class="sidebar">
 			<ul>
-				<li><a href="#" title="">Collection</a> 
+				<li>Collection
 				   
 			 	 <ul class="collection">
 				      <li><a href="/collection/plus.php" title="">plus</a><span class="icon"></span></li>
@@ -84,7 +85,7 @@
 	               </ul>             
                
 				</li> 
-				<li><a href="#" title="">About</a>   
+				<li>About 
 				   
 				   <ul class="about">
 					  <li><a href="#" title="">vision</a></li>
