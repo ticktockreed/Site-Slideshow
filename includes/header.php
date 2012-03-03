@@ -43,10 +43,21 @@
 	<!-- JS
 	================================================== -->
 	<script src="/javascripts/modernizr.custom.js"></script>
+	
+	<!-- Typekit
+	================================================== 	
+	<script type="text/javascript" src="http://use.typekit.com/ggr7xgm.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	-->
+	
+	
+	<!-- jQuery
+	================================================== -->
 	<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 	<script src="/javascripts/jquery.hashchange-1.3.js"></script>
 	<script src="/javascripts/jquery.cycle.all.js"></script>
 	<script src="/javascripts/scripttest.js"></script>
+	
 </head>
 <body class="<?php print($pageslug); ?>">
 

@@ -39,6 +39,11 @@ var objGlobals = {
 		objGlobals.init_slideshow();
 		objGlobals.init_details();
 		
+		// Check for initial hash
+		if (window.location.hash.length > 5) {
+			$(window).hashchange();
+		}
+		
 	},
 	
 	/**
@@ -57,7 +62,7 @@ var objGlobals = {
 			
 			$(window).hashchange(function() {
 				// ADD THIS LATER // _gaq.push(['_trackPageview', window.location.hash.substr(1)]);
-				objGlobals.init_ajax_site(window.location.hash);
+				objGlobals._fetch_page_via_ajax(window.location.hash); 
 			});
 			
 		}
@@ -71,8 +76,6 @@ var objGlobals = {
 	 */
 	init_ajax_site: function() {
 		
-		var ajaxwrapper = objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP
-		
 		
 		var ajaxpage = $('a');
 		$('.images img').fadeIn('slow');
@@ -85,7 +88,7 @@ var objGlobals = {
 
 			window.location.hash = strURL;		
 
-		    $(ajaxwrapper).fadeOut('fast',loadContent);  
+		    $(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent);  
 		    $('body').append('<span id="load">LOADING...</span>')
 			$('#load').fadeIn('fast');     
 			
@@ -107,14 +110,14 @@ var objGlobals = {
 				});
 				
 				// Inject new page #content into the DOM
-				$(ajaxwrapper).load(toLoad,'',showNewContent);
+				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).load(toLoad,'',showNewContent);
 				
 			}
 
 			function showNewContent() {
 				
-				$(ajaxwrapper).fadeIn('normal',hideLoader)
-				$(ajaxwrapper + 'img').fadeIn('slow');
+				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeIn('normal',hideLoader)
+				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP + 'img').fadeIn('slow');
 
 				$('img').load(function(){
 					$(this).fadeIn('slow');
@@ -131,6 +134,85 @@ var objGlobals = {
 
 
 		});
+		
+	},
+	
+	/**
+	 * This method is our main utility method for loading a link in via AJAX. You
+	 * have the option of specifying a success callback.
+	 */
+	_fetch_page_via_ajax: function(strURL, funcCallback) {
+		
+		if (strURL.substr(0, 1) == "#" && strURL.length > 1) {
+			strURL = strURL.substr(1);
+		}
+		
+		if (strURL == "") {
+			strURL = "/";
+		}
+		
+		if (strURL) {
+			
+			//objGlobals.show_loading(true);
+			//alert('it picked up the url with a hash');
+			
+			var toLoad = strURL + ' #content #wrapper'; 
+
+
+			window.location.hash = strURL;		
+ 
+//
+//
+// HOW DO YOU CALL A FUNCTION FROM one function within another one?
+// Namespacing makes sense, objGlobals.init_ajax_site - but what about functions within that. how do you call those?
+//
+//
+			
+			function loadContent2(){
+			
+				// AJAX in whole page so we can grab what we need
+				$.ajax({
+				  url: strURL,
+				  dataType: 'html',
+				  success: function( data, showNewContent ) {
+			    
+					// Change page title 
+					var matches = data.match(/<title>(.*?)<\/title>/);
+				    var spUrlTitle = matches[1];
+					document.title = spUrlTitle;
+				
+				  }
+				});
+				
+				// Inject new page #content into the DOM
+				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).load(toLoad,'',showNewContent);
+				
+			}
+
+			function showNewContent() {
+				
+				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeIn('normal',hideLoader)
+				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP + 'img').fadeIn('slow');
+
+				$('img').load(function(){
+					$(this).fadeIn('slow');
+				});
+				objGlobals.init_slideshow();
+				objGlobals.init_details();
+				
+			}
+
+			function hideLoader(){
+				$('#load').fadeOut('100');
+						$('#load').remove();
+			}
+
+
+		    $(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent2);  
+		    $('body').append('<span id="load">LOADING...</span>')
+			$('#load').fadeIn('fast');
+			
+		}
 		
 	},
 	
