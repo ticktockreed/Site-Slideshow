@@ -18,6 +18,7 @@ var objGlobals = {
 	CONSTANTS: {
 		
 		CSS_AJAX_CONTENT_WRAP: '#content',
+		CSS_MAIN_NAV: "#nav", 
 
 		
 	},
@@ -38,6 +39,7 @@ var objGlobals = {
 		objGlobals.init_hash_change_hook();
 		objGlobals.init_slideshow();
 		objGlobals.init_details();
+		objGlobals.init_nav();
 		
 		// Check for initial hash
 		if (window.location.hash.length > 5) {
@@ -68,6 +70,34 @@ var objGlobals = {
 		}
 		
 	},
+	
+	init_nav: function() {
+		
+		$('#nav li').click(function(){
+			
+			if ($('#nav li').hasClass('open')) {
+				
+				$(this).children('ul').animate({
+					height: '0',
+					opacity: '0'
+				});
+				
+				$(this).removeClass('open');
+				
+			} else {
+
+				$(this).children('ul').animate({
+					height: '200px',
+					opacity: '1'
+				});
+
+				$(this).addClass('open');
+				
+			}
+			
+		});
+		
+	},	
 	
 	/**
 	 * Since the site should be completely AJAX, we need to hook all
@@ -248,35 +278,30 @@ var objGlobals = {
 		
 	},
 	
-	/**********************************************************
-		Slideshow
-	**********************************************************/
-		init_details: function() {		
-		
-				$('#sign').click(function() {
+	init_details: function() {		
+
+			$('#sign').click(function() {
+			
+					if ($('#copy').hasClass('open'))
+					{
+						$('#copy').removeClass('open');
+						$('#details').animate({
+							right: '-110%'
+						});
+					}  else {
 					
-						if ($('#copy').hasClass('open'))
-						{
-							$('#copy').removeClass('open');
-							$('#details').animate({
-								right: '-110%'
-							});
-						}  else {
-							
-							$('#copy').addClass('open');
-							$('#details').animate({
-								right: '0%'
-							});
-						}
-				});				
-			
-			
-			
-		},
+						$('#copy').addClass('open');
+						$('#details').animate({
+							right: '0%'
+						});
+					}
+			});				
+	
+	},
 }
 
-	/**
-	 * Document Ready Event. Don't stuff JS here. Put it
-	 * where it belongs!
-	 */
-	$(function() { objGlobals.init(); });
+/**
+ * Document Ready Event. Don't stuff JS here. Put it
+ * where it belongs!
+ */
+$(function() { objGlobals.init(); });

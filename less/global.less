@@ -13,8 +13,8 @@
 
 html {
 	width: 100%;
-	height:100%;
-	overflow:hidden;
+	height: 100%;
+	overflow: hidden;
 }
 /*=============================================================================
  Layout
@@ -89,11 +89,11 @@ html {
 				opacity:0; 
 				margin: 0 0 0 20px;
 
-				-webkit-transition: all 1s ease-in-out;
-				-moz-transition: all 1s ease-in-out;
-				-o-transition: all 1s ease-in-out;
-				-ms-transition: all 1s ease-in-out;
-				transition: all 1s ease-in-out;
+			/*	-webkit-transition: all 1s ease-in-out;
+							-moz-transition: all 1s ease-in-out;
+							-o-transition: all 1s ease-in-out;
+							-ms-transition: all 1s ease-in-out;
+							transition: all 1s ease-in-out;*/
 				
 				a {
 					color: lighten(@text-color, 30%);
@@ -101,18 +101,18 @@ html {
 				
 			}
 			 
-			&:hover ul {
-				opacity: 1;
-			}	
-			
-			&:hover ul.collection {
-				height:180px; 
-			}
-			
-			&:hover ul.about {
-				height:100px; 
-			}
-
+		/*	&:hover ul {
+						opacity: 1;
+					}	
+					
+					&:hover ul.collection {
+						height:180px; 
+					}
+					
+					&:hover ul.about {
+						height:100px; 
+					}
+		*/
 			
 		}  
 	}
@@ -162,6 +162,7 @@ html {
 	width: 100%;
 	height: 100%;
 	z-index: 2;
+	min-width: 800px;
 	
 	#copy {
 		bottom: 40px;
@@ -205,7 +206,6 @@ html {
     position: relative;
     width: 124px;
     z-index: 12;
-	margin-left: 40px;
 	
 	#prev {
 		background: url(../images/controls.png) repeat scroll -133px 0 transparent;
