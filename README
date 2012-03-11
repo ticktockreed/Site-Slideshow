@@ -1,0 +1,17 @@
+Additions
+
+1.) Use image for plus sign.
+2.) Use triangles for play/pause buttons
+3.) Use highlight colour for 'playing' button.
+4.) Test on mobile
+5.) Nav to slide out on click rather than hover and use jQuery
+6.) FB and Twitter share buttons
+7.) Buy button
+8.) About pages
+9.) Javascript checks for hashtag in url as page loads and loads content
+10.) Allowing people to share a link with a /#/ in the url - currently one of these will just go to the homepage.
+11.) Load Arial Black for Apple Devices
+
+4.) I think we should do some quick usability testing so we can make it ridiculously intuitive. Basically set some tasks and get people to do them on the site, then watch them and make adjustments.
+
+5.) Hooking up Google Analytics

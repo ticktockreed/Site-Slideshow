@@ -154,6 +154,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition:all 350ms linear;
   transition:all 350ms linear;
 }
+@font-face {
+  font-family:'ArialBlackRegular';
+  src:url('/fonts/arial_black-webfont.eot');
+  src:url('/fonts/arial_black-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/arial_black-webfont.woff') format('woff'), url('/fonts/arial_black-webfont.ttf') format('truetype'), url('/fonts/arial_black-webfont.svg#ArialBlackRegular') format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
 body {
   font-family:Helvetica, Arial, sans-serif;
   color:#333333;
@@ -162,7 +169,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
   color:#333333;
-  font-family:'Arial Black', Helvetica, Arial, sans-serif;
+  font-family:'Arial Black', 'ArialBlackRegular', Helvetica, Arial, sans-serif;
   font-weight:normal;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight:inherit; }
@@ -480,11 +487,7 @@ html {
   display:block;
 }
 #nav ul li ul a { color:#808080; }
-#nav ul li ul {
-  height:0;
-  opacity:0;
-  margin:0 0 0 20px;
-}
+#nav ul li ul { margin:0 0 0 20px; }
 #nav ul li {
   margin:0;
   padding:0;
@@ -501,11 +504,12 @@ html {
   position:absolute;
   right:80px;
   z-index:999;
-  font-family:'Arial Black', Helvetica, Arial, sans-serif;
+  font-family:'Arial Black', 'ArialBlackRegular', Helvetica, Arial, sans-serif;
   text-align:right;
   font-size:1.5em;
   text-transform:lowercase;
 }
+.js #nav ul li span.head { cursor:pointer; }
 #load {
   background:none repeat scroll 0 0 #cccccc;
   background:url(../images/ajax-loader.gif) no-repeat center center transparent;
@@ -544,12 +548,14 @@ html {
   z-index:99;
 }
 #content #copy #details {
-  background:none repeat scroll 0 0 rgba(220,220,220,0.9);
+  background:none repeat scroll 0 0 rgba(240,240,240,0.9);
   position:absolute;
   right:-110%;
   z-index:12;
   width:100%;
   color:#666666;
+  bottom:0;
+  top:0;
 }
 #content #copy {
   bottom:40px;
@@ -557,7 +563,7 @@ html {
   position:absolute;
   right:110px;
   overflow:hidden;
-  height:51px;
+  height:54px;
 }
 #content {
   background:#ffffff;
@@ -573,39 +579,42 @@ html {
 }
 #controls #prev:hover { opacity:1; }
 #controls #prev {
-  background:url(../images/controls.png) repeat scroll -133px 0 transparent;
+  background:url(../images/controls.png) repeat scroll -137px 0 transparent;
   text-align:center;
-  width:40px;
+  width:32px;
   height:40px;
   float:left;
   margin-right:2px;
   text-indent:-999em;
   cursor:pointer;
+  opacity:0.5;
+}
+#controls #playpause.paused {
+  background:url(../images/controls.png) repeat scroll -6px -36px transparent;
   opacity:0.8;
 }
-#controls #playpause.paused { background:url(../images/controls.png) repeat scroll -43px 0 transparent; }
 #controls #playpause:hover { opacity:1; }
 #controls #playpause {
-  background:url(../images/controls.png) repeat scroll -3px 0 transparent;
+  background:url(../images/controls.png) repeat scroll -6px 0 transparent;
   text-align:center;
-  width:40px;
+  width:32px;
   height:40px;
   float:left;
   margin-right:2px;
   text-indent:-999em;
   cursor:pointer;
-  opacity:0.8;
+  opacity:0.5;
 }
 #controls #next:hover { opacity:1; }
 #controls #next {
-  background:url(../images/controls.png) repeat scroll -93px 0 transparent;
+  background:url(../images/controls.png) repeat scroll -98px 0 transparent;
   text-align:center;
-  width:40px;
+  width:32px;
   height:40px;
   float:left;
   cursor:pointer;
   text-indent:-999em;
-  opacity:0.8;
+  opacity:0.5;
 }
 #controls {
   float:left;
@@ -613,7 +622,7 @@ html {
   margin-left:5px;
   margin-top:5px;
   position:relative;
-  width:124px;
+  width:103px;
   z-index:12;
 }
 #slideshow {
@@ -694,15 +703,16 @@ html.js #content .details {
   overflow:hidden;
 }
 html.js #sign {
+  text-indent:100%;
+  white-space:nowrap;
+  overflow:hidden;
   bottom:40px;
   display:block;
-  font-family:arial black;
-  font-size:98px;
-  height:auto;
-  line-height:0.58em;
   position:absolute;
   right:80px;
-  vertical-align:middle;
   z-index:99;
   cursor:pointer;
+  width:54px;
+  height:54px;
+  background:url('../images/plus-sign.png') no-repeat 0 0 transparent;
 }

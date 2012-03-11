@@ -84,7 +84,7 @@
 		
 		<nav rel="navigation" id="nav" class="sidebar">
 			<ul>
-				<li>Collection
+				<li><span class="head">Collection</span>
 				   
 			 	 <ul class="collection">
 				      <li><a href="/collection/plus.php" title="">plus</a><span class="icon"></span></li>
@@ -97,7 +97,7 @@
 	               </ul>             
                
 				</li> 
-				<li>About 
+				<li><span class="head">About</span>
 				   
 				   <ul class="about">
 					  <li><a href="#" title="">vision</a></li>

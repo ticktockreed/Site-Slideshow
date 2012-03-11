@@ -85,41 +85,21 @@ html {
 			}
 			
 			ul {
-				height:0;
-				opacity:0; 
 				margin: 0 0 0 20px;
 
-			/*	-webkit-transition: all 1s ease-in-out;
-							-moz-transition: all 1s ease-in-out;
-							-o-transition: all 1s ease-in-out;
-							-ms-transition: all 1s ease-in-out;
-							transition: all 1s ease-in-out;*/
 				
 				a {
 					color: lighten(@text-color, 30%);
 				}
 				
 			}
-			 
-		/*	&:hover ul {
-						opacity: 1;
-					}	
-					
-					&:hover ul.collection {
-						height:180px; 
-					}
-					
-					&:hover ul.about {
-						height:100px; 
-					}
-		*/
 			
 		}  
 	}
 
 }  
 
-
+.js #nav ul li span.head {cursor: pointer;}
 
 /*=============================================================================
  General Page Styling
@@ -170,15 +150,17 @@ html {
 		position: absolute;
 		right: 110px;
 		overflow: hidden;
-		height: 51px;
+		height: 54px;
 		
 		#details {
-		    background: none repeat scroll 0 0 rgba(220, 220, 220, 0.9);
+		    background: none repeat scroll 0 0 rgba(240, 240, 240, 0.9);
 			position: absolute;
 			right: -110%;
 		    z-index: 12;
 			width: 100%;
 			color: lighten(@text-color, 20%);
+			bottom: 0;
+			top: 0;
 			
 			
 			.title {
@@ -204,19 +186,19 @@ html {
     margin-left: 5px;
     margin-top: 5px;
     position: relative;
-    width: 124px;
+    width: 103px;
     z-index: 12;
 	
 	#prev {
-		background: url(../images/controls.png) repeat scroll -133px 0 transparent;
+		background: url(../images/controls.png) repeat scroll -137px 0 transparent;
 		text-align:center;
-		width: 40px; 
+		width: 32px; 
 		height: 40px;
 		float:left;
 		margin-right: 2px;
 		text-indent: -999em;
 		cursor: pointer;
-		opacity: 0.8;
+		opacity: 0.5;
 		
 		&:hover {
 			opacity: 1;
@@ -224,18 +206,19 @@ html {
 		
 	}
 	#playpause {
-		background: url(../images/controls.png) repeat scroll -3px 0 transparent;
+		background: url(../images/controls.png) repeat scroll -6px 0 transparent;
 		text-align:center;
-		width: 40px;
+		width: 32px;
 		height: 40px;
 		float:left;
 		margin-right: 2px;
 		text-indent: -999em;
 		cursor: pointer;
-		opacity: 0.8;
+		opacity: 0.5;
 		
 		&.paused {
-			background: url(../images/controls.png) repeat scroll -43px 0 transparent;			
+			background: url(../images/controls.png) repeat scroll -6px -36px transparent;
+			opacity: 0.8;			
 		}
 
 		&:hover {
@@ -244,14 +227,14 @@ html {
 	
 	}
 	#next {
-		background: url(../images/controls.png) repeat scroll -93px 0 transparent;
+		background: url(../images/controls.png) repeat scroll -98px 0 transparent;
 		text-align:center;
-		width: 40px;
+		width: 32px;
 		height: 40px;
 		float:left;
 		cursor: pointer;
 		text-indent: -999em;
-		opacity: 0.8;
+		opacity: 0.5;
 		
 		&:hover {
 			opacity: 1;
@@ -333,17 +316,20 @@ html.js {
 		overflow:hidden;
 	}
 	#sign {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		
 	    bottom: 40px;
 	    display: block;
-	    font-family: arial black;
-	    font-size: 98px;
-	    height: auto;
-	    line-height: 0.58em;
 	    position: absolute;
 	    right: 80px;
-	    vertical-align: middle;
 	    z-index: 99;
 		cursor: pointer;
+		width: 54px;
+		height: 54px;
+		
+		background: url('../images/plus-sign.png') no-repeat 0 0 transparent;
 	}
 }
 

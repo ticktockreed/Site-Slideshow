@@ -8,7 +8,7 @@
 /**
  * Globals Object
 **/
-var objGlobals = {
+var additions = {
 	
 	/**
 	 * Constants used throughout the app. Any selectors you use
@@ -35,11 +35,11 @@ var objGlobals = {
 		});
 		
 		
-		objGlobals.init_ajax_site();
-		objGlobals.init_hash_change_hook();
-		objGlobals.init_slideshow();
-		objGlobals.init_details();
-		objGlobals.init_nav();
+		additions.init_ajax_site();
+		additions.init_hash_change_hook();
+		additions.init_slideshow();
+		additions.init_details();
+		additions.init_nav();
 		
 		// Check for initial hash
 		if (window.location.hash.length > 5) {
@@ -64,7 +64,7 @@ var objGlobals = {
 			
 			$(window).hashchange(function() {
 				// ADD THIS LATER // _gaq.push(['_trackPageview', window.location.hash.substr(1)]);
-				objGlobals._fetch_page_via_ajax(window.location.hash); 
+				additions._fetch_page_via_ajax(window.location.hash); 
 			});
 			
 		}
@@ -73,31 +73,59 @@ var objGlobals = {
 	
 	init_nav: function() {
 		
-		$('#nav li').click(function(){
+		
+		$('#nav li').each(function(index) {
 			
-			if ($('#nav li').hasClass('open')) {
+			var $this = $(this);
+			
+			// Get the height so that we can use animate function
+			var $submenuHeight = $this.children('ul').height(); 
+			$this.children('ul').css('height','0');
+			
+			// Only do this if there is a submenu to show.			
+			if ($this.children('ul').length > 0) {
 				
-				$(this).children('ul').animate({
-					height: '0',
-					opacity: '0'
+				$this.children('.head').click(function(){
+					
+					if ($this.hasClass('open')) {
+
+						$this.children('ul').animate({
+							height: '0',
+							opacity: '0'
+						});
+
+						$this.removeClass('open');
+
+					} else {
+						
+						console.log($submenuHeight);
+						
+						$this.children('ul').animate({
+							height: $submenuHeight + 'px',
+							opacity: '1'
+						});
+
+						$this.addClass('open');
+						
+						// Hide all the other submenu items
+						$this.siblings('li').children('ul').animate({
+							height: '0',
+							opacity: '0'
+						});
+						$this.siblings('li').removeClass('open');
+
+					}
+					
 				});
 				
-				$(this).removeClass('open');
-				
-			} else {
-
-				$(this).children('ul').animate({
-					height: '200px',
-					opacity: '1'
-				});
-
-				$(this).addClass('open');
 				
 			}
-			
 		});
 		
-	},	
+
+
+
+	},
 	
 	/**
 	 * Since the site should be completely AJAX, we need to hook all
@@ -118,7 +146,7 @@ var objGlobals = {
 
 			window.location.hash = strURL;		
 
-		    $(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent);  
+		    $(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent);  
 		    $('body').append('<span id="load">LOADING...</span>')
 			$('#load').fadeIn('fast');     
 			
@@ -140,20 +168,20 @@ var objGlobals = {
 				});
 				
 				// Inject new page #content into the DOM
-				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).load(toLoad,'',showNewContent);
+				$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).load(toLoad,'',showNewContent);
 				
 			}
 
 			function showNewContent() {
 				
-				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeIn('normal',hideLoader)
-				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP + 'img').fadeIn('slow');
+				$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeIn('normal',hideLoader)
+				$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP + 'img').fadeIn('slow');
 
 				$('img').load(function(){
 					$(this).fadeIn('slow');
 				});
-				objGlobals.init_slideshow();
-				objGlobals.init_details();
+				additions.init_slideshow();
+				additions.init_details();
 				
 			}
 
@@ -183,7 +211,7 @@ var objGlobals = {
 		
 		if (strURL) {
 			
-			//objGlobals.show_loading(true);
+			//additions.show_loading(true);
 			//alert('it picked up the url with a hash');
 			
 			var toLoad = strURL + ' #content #wrapper'; 
@@ -194,7 +222,7 @@ var objGlobals = {
 //
 //
 // HOW DO YOU CALL A FUNCTION FROM one function within another one?
-// Namespacing makes sense, objGlobals.init_ajax_site - but what about functions within that. how do you call those?
+// Namespacing makes sense, additions.init_ajax_site - but what about functions within that. how do you call those?
 //
 //
 			
@@ -215,20 +243,20 @@ var objGlobals = {
 				});
 				
 				// Inject new page #content into the DOM
-				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).load(toLoad,'',showNewContent);
+				$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).load(toLoad,'',showNewContent);
 				
 			}
 
 			function showNewContent() {
 				
-				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeIn('normal',hideLoader)
-				$(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP + 'img').fadeIn('slow');
+				$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeIn('normal',hideLoader)
+				$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP + 'img').fadeIn('slow');
 
 				$('img').load(function(){
 					$(this).fadeIn('slow');
 				});
-				objGlobals.init_slideshow();
-				objGlobals.init_details();
+				additions.init_slideshow();
+				additions.init_details();
 				
 			}
 
@@ -238,7 +266,7 @@ var objGlobals = {
 			}
 
 
-		    $(objGlobals.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent2);  
+		    $(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent2);  
 		    $('body').append('<span id="load">LOADING...</span>')
 			$('#load').fadeIn('fast');
 			
@@ -304,4 +332,4 @@ var objGlobals = {
  * Document Ready Event. Don't stuff JS here. Put it
  * where it belongs!
  */
-$(function() { objGlobals.init(); });
+$(function() { additions.init(); });
