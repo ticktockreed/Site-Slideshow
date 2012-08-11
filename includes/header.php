@@ -56,6 +56,7 @@
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script> -->
 	<script src="/javascripts/jquery-1.6.2.min.js"></script>
 	<script src="/javascripts/jquery.hashchange-1.3.js"></script>
+	<script src="/javascripts/jquery.cycle.all.js"></script>
 	<script src="/javascripts/scripttest.js"></script>
 	
 </head>

@@ -1,6 +1,6 @@
 /*
 * AJAX Pageload
-* Copyright 2012, Tim Reed             
+* Copyright 2012, Tim Reed			   
 * http://www.opensource.org/licenses/mit-license.php
 * 8/17/2011
 */
@@ -30,14 +30,14 @@ var additions = {
 	init: function() {
 		
 		// don't cache AJAXed content
-		$.ajaxSetup ({  
-		    cache: false  
+		$.ajaxSetup ({	
+			cache: false  
 		});
 		
 		
 		additions.init_ajax_site();
 		additions.init_hash_change_hook();
-		additions.init_slideshow();
+		//additions.init_slideshow();
 		additions.init_details();
 		additions.init_nav();
 		
@@ -138,17 +138,17 @@ var additions = {
 		var ajaxpage = $('a');
 		$('.images img').fadeIn('slow');
 		
-		ajaxpage.click(function(event){            
-		   event.preventDefault();            
+		ajaxpage.click(function(event){			   
+		   event.preventDefault();			  
 			var strURL = $(this).attr('href')
 			var toLoad = strURL + ' #content #wrapper'; 
 
 
 			window.location.hash = strURL;		
 
-		    $(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent);  
-		    $('body').append('<span id="load">LOADING...</span>')
-			$('#load').fadeIn('fast');     
+			$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent);  
+			$('body').append('<span id="load">LOADING...</span>')
+			$('#load').fadeIn('fast');	   
 			
 
 			function loadContent(){
@@ -158,10 +158,10 @@ var additions = {
 				  url: strURL,
 				  dataType: 'html',
 				  success: function( data, showNewContent ) {
-			    
+				
 					// Change page title 
 					var matches = data.match(/<title>(.*?)<\/title>/);
-				    var spUrlTitle = matches[1];
+					var spUrlTitle = matches[1];
 					document.title = spUrlTitle;
 				
 				  }
@@ -180,7 +180,6 @@ var additions = {
 				$('img').load(function(){
 					$(this).fadeIn('slow');
 				});
-				additions.init_slideshow();
 				additions.init_details();
 				
 			}
@@ -233,10 +232,10 @@ var additions = {
 				  url: strURL,
 				  dataType: 'html',
 				  success: function( data, showNewContent ) {
-			    
+				
 					// Change page title 
 					var matches = data.match(/<title>(.*?)<\/title>/);
-				    var spUrlTitle = matches[1];
+					var spUrlTitle = matches[1];
 					document.title = spUrlTitle;
 				
 				  }
@@ -255,7 +254,6 @@ var additions = {
 				$('img').load(function(){
 					$(this).fadeIn('slow');
 				});
-				additions.init_slideshow();
 				additions.init_details();
 				
 			}
@@ -266,8 +264,8 @@ var additions = {
 			}
 
 
-		    $(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent2);  
-		    $('body').append('<span id="load">LOADING...</span>')
+			$(additions.CONSTANTS.CSS_AJAX_CONTENT_WRAP).fadeOut('fast',loadContent2);	
+			$('body').append('<span id="load">LOADING...</span>')
 			$('#load').fadeIn('fast');
 			
 		}
@@ -278,35 +276,35 @@ var additions = {
 /**********************************************************
 	Slideshow
 **********************************************************/
-	init_slideshow: function() {
-		
-		if ($('#slideshow').children().length > 1)
-		  {
-			$('#details').prepend('<div id="controls"><div id="prev" class="btn">BACK</div><div id="playpause" class="btn">PLAY</div><div id="next" class="btn">NEXT</div></div>');
-		  }
-		
-		// Start the slideshow
-		$('#slideshow').cycle({
-			timeout:1000,
-			width: 'fit',
-		    prev:   '#prev', 
-		    next:   '#next'
-		});
-		
-		// Play / Pause Button
-		$('#playpause').toggle(function() { 
-		    $('#slideshow').cycle('pause'); 
-			$(this).addClass('paused');
-			$(this).html('PLAY');
-		}, function () {
-			$('#slideshow').cycle('resume'); 
-			$(this).removeClass('paused');
-			$(this).html('PAUSE');
-		});
-		
-	},
-	
-	init_details: function() {		
+	// init_slideshow: function() {
+	//	
+	//	if ($('#slideshow').children().length > 1)
+	//	  {
+	//		$('#details').prepend('<div id="controls"><div id="prev" class="btn">BACK</div><div id="playpause" class="btn">PLAY</div><div id="next" class="btn">NEXT</div></div>');
+	//	  }
+	//	
+	//	// Start the slideshow
+	//	$('#slideshow').cycle({
+	//		timeout:1000,
+	//		width: 'fit',
+	//		prev:	'#prev', 
+	//		next:	'#next'
+	//	});
+	//	
+	//	// Play / Pause Button
+	//	$('#playpause').toggle(function() { 
+	//		$('#slideshow').cycle('pause'); 
+	//		$(this).addClass('paused');
+	//		$(this).html('PLAY');
+	//	}, function () {
+	//		$('#slideshow').cycle('resume'); 
+	//		$(this).removeClass('paused');
+	//		$(this).html('PAUSE');
+	//	});
+	//	
+	// },
+	// 
+	init_details: function() {
 
 			$('#sign').click(function() {
 			
